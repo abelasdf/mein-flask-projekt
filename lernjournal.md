@@ -48,4 +48,55 @@ docker run -p 5000:5000 mein-flask-app
 - Die größte Herausforderung war die Behebung von Port-Fehlern und das Neustarten des Docker-Daemons.
 - Docker erleichtert das Deployment und sorgt für eine konsistente Umgebung.
 
+
+
+## Lernjournal Woche 4 – MDM04 Scraping & Modellierung
+**Name:** Abel  
+**GitHub:** [abelasdf](https://github.com/abelasdf)  
+**Modul:** MDM04 – Daten erheben & aufbereiten  
+
+## Thema der Woche
+Diese Woche habe ich mich intensiv mit dem Importieren und Verarbeiten von GPX-Daten in eine MongoDB-Datenbank beschäftigt. Der Fokus lag auf der Datenmigration in die Cloud (CosmosDB), der Analyse in Python sowie dem Trainieren eines einfachen Machine Learning Modells zur Schätzung der Schwierigkeit von Wanderrouten.
+
+---
+
+## Gelernt
+
+### Datenimport & MongoDB
+- Verbindung zu einer Azure CosmosDB (MongoDB-kompatibel) hergestellt
+- Probleme mit Pfaden und Zugriffen behoben (`FileNotFoundError`, `TypeError`)
+- GPX-Dateien korrekt strukturiert und in die Datenbank importiert (`insert_many`)
+- Datenbank via `mongosh` überprüft (`use`, `show collections`, `countDocuments()`)
+
+### Modelltraining
+- Korrelationen zwischen Höhenmetern, Distanz, Geschwindigkeit und Schwierigkeit analysiert
+- Lineares Regressionsmodell trainiert
+- Ergebnisse ausgewertet mittels MSE und R²
+- Modell liefert gute Vorhersagen (R² ~ 0.93)
+
+---
+
+## Herausforderungen
+- Der URI für CosmosDB war tricky – falsche Passwörter führten zu “Invalid Key”-Fehlern
+- Einige GPX-Dateien lagen nicht am erwarteten Speicherort → Pfadstruktur bereinigt
+- `mongosh` war lokal nicht installiert → erfolgreich nachinstalliert
+- Lernte, dass CosmosDB als “non-genuine MongoDB” einige Einschränkungen haben kann
+
+---
+
+## Nächste Schritte
+- Modell mit mehr Daten testen und optimieren
+- Feature Engineering: z.B. Steigung, Höhenprofiltypen
+- Deployment meines Flask-Projekts, das auf diese Daten zugreift
+- Visualisierung der Predictions
+
+---
+
+## Reflexion
+Ich habe diese Woche viel über den Umgang mit realen Daten gelernt – wie viel Aufwand oft nötig ist, um diese überhaupt in ein analysierbares Format zu bringen. Besonders stolz bin ich darauf, dass ich alle Verbindungsprobleme lösen konnte und das Modell erstaunlich gute Resultate liefert.
+
+---
+
+## Repo (Flask-Projekt) [Mein Projekt auf GitHub](https://github.com/abelasdf/hikeplanner)
+
 ```
