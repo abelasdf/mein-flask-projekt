@@ -99,4 +99,27 @@ Ich habe diese Woche viel über den Umgang mit realen Daten gelernt – wie viel
 
 ## Repo (Flask-Projekt) [Mein Projekt auf GitHub](https://github.com/abelasdf/hikeplanner)
 
+## Woche 5 – Automation & Deployment
+
+In dieser Woche stand das Thema ModelOps mit Fokus auf die Automatisierung und das Deployment im Mittelpunkt. Ziel war es, das trainierte Modell versioniert in Azure Blob Storage hochzuladen und den Prozess grundsätzlich automatisierbar zu gestalten.
+
+### Was habe ich gemacht?
+
+- Zuerst habe ich mit `az group create` und `az storage account create` einen neuen Azure Storage Account erstellt. Dabei hatte ich anfangs Probleme mit der Auswahl und Aktivierung der korrekten Subscription („Azure for Students“), welche ich schlussendlich durch Neuanmeldung und das Setzen der Subscription lösen konnte.
+- Danach habe ich mit `az storage account keys list` den Zugriffsschlüssel geholt, der nötig war für den Upload.
+- Anschliessend wechselte ich in den Ordner `model` und habe das Modell mit `python model.py` erneut erstellt.
+- Mit dem Befehl `python save.py -c "<ConnectionString>"` wurde das Modell erfolgreich in einem neuen, automatisch benannten Container (`hikeplanner-model-2`) hochgeladen.
+- Ich habe überprüft, dass das Modell korrekt auf Azure gespeichert wurde und somit versioniert vorliegt.
+
+### Was habe ich gelernt?
+
+- Ich habe ein tieferes Verständnis für Azure Blob Storage und die Verwendung der CLI gewonnen.
+- Ich habe gelernt, wie ich mit Azure CLI Ressourcen in der Cloud managen kann – insbesondere Ressourcengruppen und Storage Accounts.
+- Ich habe zum ersten Mal einen Machine Learning Workflow so gestaltet, dass er in die Cloud exportiert werden kann.
+
+### Nächste Schritte
+
+- Als nächstes werde ich mich mit der Automatisierung durch **GitHub Actions** beschäftigen.
+- Ausserdem möchte ich das Modell lokal in der App verwenden und anschließend das Deployment mit Docker und eventuell Azure WebApp testen.
+
 ```
